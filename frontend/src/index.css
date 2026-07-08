@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+    background: #1A1A1A;
+  }
+}
+
+/* ===== 3D Perspective Container ===== */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: center;
+}
+
+/* ===== Glassmorphism ===== */
+.glass {
+  background: rgba(30, 30, 30, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel {
+  background: rgba(24, 24, 24, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* ===== 3D Cube Animation ===== */
+.cube-scene {
+  width: 50px;
+  height: 50px;
+  perspective: 300px;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: cube-spin 6s ease-in-out infinite;
+}
+
+.cube-face {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  opacity: 0.92;
+}
+
+.cube-face--front  { background: linear-gradient(135deg, #45B7D1, #6EC6FF); transform: translateZ(25px); }
+.cube-face--back   { background: linear-gradient(135deg, #4ECDC4, #2ECC71); transform: rotateY(180deg) translateZ(25px); }
+.cube-face--right  { background: linear-gradient(135deg, #45B7D1, #6C5CE7); transform: rotateY(90deg) translateZ(25px); }
+.cube-face--left   { background: linear-gradient(135deg, #F9CA24, #F0932B); transform: rotateY(-90deg) translateZ(25px); }
+.cube-face--top    { background: linear-gradient(135deg, #A29BFE, #6C5CE7); transform: rotateX(90deg) translateZ(25px); }
+.cube-face--bottom { background: linear-gradient(135deg, #7C3AED, #6366F1); transform: rotateX(-90deg) translateZ(25px); }
+
+@keyframes cube-spin {
+  0%   { transform: rotateX(-20deg) rotateY(0deg); }
+  25%  { transform: rotateX(-25deg) rotateY(90deg); }
+  50%  { transform: rotateX(-15deg) rotateY(180deg); }
+  75%  { transform: rotateX(-25deg) rotateY(270deg); }
+  100% { transform: rotateX(-20deg) rotateY(360deg); }
+}
+
+/* ===== 3D Card Effects ===== */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card-3d:hover {
+  transform: translateZ(8px) rotateX(1deg) rotateY(-0.5deg);
+  box-shadow:
+    0 20px 60px -15px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== 3D Floating Icon ===== */
+.icon-3d {
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-3d:hover {
+  transform: rotateY(15deg) rotateX(-5deg) scale(1.08);
+}
+
+/* ===== Depth Shadows ===== */
+.shadow-depth {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    0 6px 16px rgba(0, 0, 0, 0.3),
+    0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-depth-glow {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(120, 120, 255, 0.06);
+}
+
+/* ===== Input Bar Glow Effect ===== */
+.input-glow {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.input-glow:focus-within {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Terminal Cursor ===== */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-start infinite;
+}
+
+/* ===== Shimmer Loader ===== */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-anim 1.5s infinite;
+}
+
+@keyframes shimmer-anim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== Gradient Text ===== */
+.text-gradient-multi {
+  background: linear-gradient(135deg, #45B7D1, #F9CA24, #4ECDC4, #45B7D1, #A29BFE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Floating Animation ===== */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+/* ===== Suggestion Card Hover ===== */
+.suggestion-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.suggestion-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Ambient Soft Glow ===== */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* ===== Message bubble 3D ===== */
+.msg-bubble {
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.msg-bubble:hover {
+  transform: translateZ(4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
