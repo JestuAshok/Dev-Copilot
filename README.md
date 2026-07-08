@@ -1,6 +1,6 @@
 # Dev-Copilot – Professional AI Software Development Copilot Studio
 
-Dev-Copilot is a production-quality AI software development copilot inspired by modern coding environments like Cursor and Kiro. It features an agentic reasoning engine, persistent vector memory, automated file execution, real-time command streaming, and a monitoring dashboard.
+Dev-Copilot is a production-quality AI software development copilot inspired by modern coding environments like Cursor and Kiro. It features an agentic reasoning engine, persistent vector memory, automated file execution, real-time command streaming, and a monitoring dashboard..
 
 ---
 
